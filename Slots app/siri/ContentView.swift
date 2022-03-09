@@ -48,6 +48,10 @@ struct ContentView: View {
                 }
                 Spacer()
                 
+                HStack{
+                    Text("hai")
+                }
+                
                 
                 Button(action: {
                     
