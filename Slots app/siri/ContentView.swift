@@ -27,7 +27,7 @@ struct ContentView: View {
                 HStack{
                     Image(systemName:"cube.fill").foregroundColor(.red)
                     
-                    Text("hai Srujan").fontWeight(.heavy)
+                    Text("Check Your Luck").fontWeight(.heavy)
                     
                     Image(systemName:"cube.fill").foregroundColor(.red)
                 }.scaleEffect(2)
@@ -41,28 +41,31 @@ struct ContentView: View {
                 
                 HStack{
                     Spacer()
-                    cardview(symbol:$symbols[numbers[0]])
-                    cardview(symbol:$symbols[numbers[1]])
-                    cardview(symbol:$symbols[numbers[2]])
+                    cardview(symbol:$symbols[numbers[0]], background: $backgrounds[0])
+                    cardview(symbol:$symbols[numbers[1]],background: $backgrounds[1])
+                    cardview(symbol:$symbols[numbers[2]],background: $backgrounds[2])
 
                     Spacer()
                 }
                 Spacer()
                 
-                HStack{
-                    Text("hai")
-                }
-                
+               
                 
                 Button(action: {
                     
-                    self.numbers[0]=Int.random(in: 0...self.symbols.count-1)
-                    self.numbers[1]=Int.random(in: 0...self.symbols.count-1)
-                    self.numbers[2]=Int.random(in: 0...self.symbols.count-1)
+                    self.backgrounds=self.backgrounds.map{ _ in Color.white}
+                    
+                    self.numbers=self.numbers.map({
+                        _ in Int.random(in: 0...self.symbols.count-1)
+                    })
+                    
                    
                     
                     if(self.numbers[0]==self.numbers[1]&&self.numbers[1]==self.numbers[2]){
                         self.credits = self.credits+10*betamount
+                        
+                        
+                        self.backgrounds=self.backgrounds.map{ _ in Color.green}
         
                     }
                     else{
@@ -74,7 +77,8 @@ struct ContentView: View {
                 }){
                     
                     Text("click me").foregroundColor(.black)
-                        .padding(.all,15).background(.red).cornerRadius(20)
+                        .padding(.all,10).padding([.leading,.trailing],20)
+                        .background(.red).cornerRadius(20)
                     
                 }; Spacer()
             }
