@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var numbers=[0,1,2]
     @State private var backgrounds = [Color.white,Color.white,Color.white]
     @State private var credits=1000
+    @State private var count=0
     private var betamount=5
     var body: some View {
         ZStack{
